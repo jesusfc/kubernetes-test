@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  labels:
+    app: webapp
+data:
+  # Configuration values
+  database_url: "postgresql://db.example.com:5432/mydb"
+  cache_enabled: "true"
+  log_level: "info"
+  app.properties: |
+    environment=production
+    max_connections=100
+    timeout=30s
