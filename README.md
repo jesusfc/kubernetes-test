@@ -90,6 +90,28 @@ kubectl get secrets
 kubectl get configmaps
 ```
 
+## 🔒 Seguridad y Buenas Prácticas
+
+### Secrets
+Los archivos de ejemplo contienen contraseñas y credenciales de demostración. **NUNCA** uses estos valores en producción:
+
+```bash
+# Generar una contraseña segura
+openssl rand -base64 32
+
+# Crear un Secret desde la línea de comandos (recomendado para producción)
+kubectl create secret generic redis-secret \
+  --from-literal=redis-password=$(openssl rand -base64 32)
+
+# Ver Secrets (los valores están codificados en base64, no encriptados en la salida)
+kubectl get secret redis-secret -o yaml
+```
+
+**Importante:**
+- Nunca commitear Secrets reales al repositorio
+- Usar herramientas como Sealed Secrets o External Secrets para gestionar secretos en producción
+- Los Secrets de Kubernetes se almacenan codificados en base64, no encriptados (usar encryption at rest en el cluster)
+
 ## 🧹 Limpiar recursos
 
 Para eliminar todos los recursos creados:
