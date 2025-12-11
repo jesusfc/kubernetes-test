@@ -78,11 +78,15 @@ kubectl get services
 # Crear namespace
 kubectl apply -f k8s/configs/namespace.yaml
 
-# Crear configmap
+# Crear secrets (datos sensibles)
+kubectl apply -f k8s/configs/secrets.yaml
+
+# Crear configmap (datos no sensibles)
 kubectl apply -f k8s/configs/configmap.yaml
 
 # Ver los recursos creados
 kubectl get namespaces
+kubectl get secrets
 kubectl get configmaps
 ```
 
@@ -100,6 +104,7 @@ kubectl delete -f k8s/services/
 
 # Eliminar configmap
 kubectl delete -f k8s/configs/configmap.yaml
+kubectl delete -f k8s/configs/secrets.yaml
 
 # Eliminar namespace (opcional)
 kubectl delete -f k8s/configs/namespace.yaml
@@ -126,7 +131,8 @@ kubectl delete -f k8s/configs/namespace.yaml
 
 ### Configs
 
-- **configmap.yaml**: ConfigMap con ejemplos de configuraciones de aplicación
+- **configmap.yaml**: ConfigMap con ejemplos de configuraciones no sensibles de aplicación
+- **secrets.yaml**: Secrets para almacenar datos sensibles como contraseñas y URLs de bases de datos
 - **namespace.yaml**: Namespace para separar entornos
 
 ## 🎓 Comandos Útiles de Kubernetes

@@ -20,7 +20,7 @@
 - **File**: `k8s/pods/pod3-redis.yaml`
 - **Image**: redis:7-alpine
 - **Port**: 6379
-- **Features**: Environment variables, persistent volume
+- **Features**: Environment variables from Secret, persistent volume
 - **Resources**: 128Mi-256Mi RAM, 250m-500m CPU
 
 ### 2. Deployment with 3 Replicas
@@ -45,7 +45,11 @@
 
 #### ConfigMap
 - **File**: `k8s/configs/configmap.yaml`
-- **Contains**: Database URL, cache settings, log level, app properties
+- **Contains**: Cache settings, log level, app properties (non-sensitive data)
+
+#### Secrets
+- **File**: `k8s/configs/secrets.yaml`
+- **Contains**: Redis password, database URL (sensitive data encrypted at rest)
 
 #### Namespace
 - **File**: `k8s/configs/namespace.yaml`

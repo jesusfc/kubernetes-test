@@ -5,10 +5,10 @@ metadata:
   labels:
     app: webapp
 data:
-  # Configuration values
-  database_url: "postgresql://db.example.com:5432/mydb"
+  # Configuration values (non-sensitive)
   cache_enabled: "true"
   log_level: "info"
+  max_connections: "100"
   app.properties: |
     environment=production
     max_connections=100

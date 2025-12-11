@@ -14,7 +14,10 @@ spec:
       name: redis
     env:
     - name: REDIS_PASSWORD
-      value: "mypassword"
+      valueFrom:
+        secretKeyRef:
+          name: redis-secret
+          key: redis-password
     resources:
       requests:
         memory: "128Mi"
